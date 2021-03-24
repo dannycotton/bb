@@ -37,8 +37,10 @@ class TestRequest(unittest.TestCase):
         self.driver.get("https://www.bookbyte.com/advancedsearch.aspx")
         self.driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_tbKeywords").send_keys("college" + Keys.RETURN)
         searchResult = wait.until(presence_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_lbSearchedFor")))
+        searchNumber = wait.until(presence_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_lblTotalResults")))
 
         self.assertEqual('college', searchResult.get_attribute("textContent"))
+        self.assertLess(0, int(searchNumber.get_attribute("textContent")))
 
 # Number 3
     def test_authors(self):
