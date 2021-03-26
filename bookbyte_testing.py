@@ -17,7 +17,7 @@ class TestRequest(unittest.TestCase):
       chrome_options = Options()
       chrome_options.add_argument("--headless")
         
-      cls.driver = webdriver.Chrome(options=chrome_options, executable_path="C:\\Programming\\Python\\bookbyte\\chromedriver.exe")
+      cls.driver = webdriver.Chrome(options=chrome_options)
 
     @classmethod
     def tearDownClass(cls):
